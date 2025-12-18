@@ -433,6 +433,12 @@ body.light .modal-body {
 </script>
 
 <body>
+<script>
+  // redirect if not logged in
+  if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.replace("login.html");
+  }
+</script>
 
   <div class="app">
 
@@ -823,3 +829,4 @@ body.light .modal-body {
 
 </body>
 </html>
+
