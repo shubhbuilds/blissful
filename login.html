@@ -1,162 +1,30 @@
-<?php
-session_start();
-
-/* ==========================
-   CONFIG (CHANGE THIS)
-========================== */
-$ADMIN_ID   = "admin";
-$ADMIN_PASS = "1234"; // simple logic as you asked
-
-/* ==========================
-   REDIRECT IF LOGGED IN
-========================== */
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    header("Location: admin.html");
-    exit();
-}
-
-/* ==========================
-   HANDLE LOGIN
-========================== */
-$error = false;
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (
-        $_POST['admin_id'] === $ADMIN_ID &&
-        $_POST['admin_pass'] === $ADMIN_PASS
-    ) {
-        $_SESSION['logged_in'] = true;
-        header("Location: admin.php");
-        exit();
-    } else {
-        $error = true;
-    }
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Admin Login</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-* {
-  box-sizing: border-box;
-  font-family: "Inter", system-ui;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
-    url("https://assets.science.nasa.gov/content/dam/science/esd/eo/content-feature/nightlights/images/media/BlackMarble_2016_Americas_composite.png?utm_source=chatgpt.com");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.login-card {
-  width: 360px;
-  padding: 30px;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(18px);
-  border-radius: 14px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.6);
-}
-
-.login-card h2 {
-  margin: 0 0 18px;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: .5px;
-}
-
-.login-card input {
-  width: 100%;
-  padding: 13px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.15);
-  background: rgba(255,255,255,.08);
-  color: white;
-  outline: none;
-  font-size: .95rem;
-}
-
-.login-card input::placeholder {
-  color: rgba(255,255,255,.6);
-}
-
-.login-card input:focus {
-  border-color: #4ade80;
-  box-shadow: 0 0 0 2px rgba(74,222,128,.25);
-}
-
-.login-card button {
-  width: 100%;
-  padding: 13px;
-  border-radius: 10px;
-  border: none;
-  background: #4ade80;
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.login-card button:hover {
-  opacity: .9;
-}
-
-.login-card button:active {
-  transform: scale(.97);
-}
-
-.error {
-  text-align: center;
-  color: #ff8a8a;
-  font-size: .9rem;
-  margin-bottom: 12px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 18px;
-  font-size: .75rem;
-  opacity: .55;
-}
-</style>
+  <title>Admin Login</title>
 </head>
-
 <body>
 
-<div class="login-card">
+<h2>Admin Login</h2>
 
-  <h2>Admin Login</h2>
+<input type="password" id="password" placeholder="Enter password">
+<button onclick="login()">Login</button>
 
-  <?php if ($error): ?>
-    <div class="error">Invalid credentials</div>
-  <?php endif; ?>
+<script>
+  function login() {
+    const pass = document.getElementById("password").value;
 
-  <form method="POST">
-    <input type="text" name="admin_id" placeholder="Admin ID" required>
-    <input type="password" name="admin_pass" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
+    if (pass === "yourSecret123") {
+      // store login state
+      localStorage.setItem("adminLoggedIn", "true");
 
-  <div class="footer">
-    Secure Access • <?= date("Y") ?>
-  </div>
-
-</div>
+      // redirect to admin page
+      window.location.href = "admin.html";
+    } else {
+      alert("Wrong password");
+    }
+  }
+</script>
 
 </body>
 </html>
-
