@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>console.log("PAGE LOADED");</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("FxVyYi2W2A5hvJc8J"); // your public key
+})();
+</script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us — Blissful Weddings</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+
+    :root {
+      --primary: #d4a373;
+      --secondary: #2a2a2a;
+      --bg: #1b1b1b;
+      --text: #f3f3f3;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: #111;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 70px;
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 5%;
+    }
+
+    .contact-info {
+      flex: 1 1 380px;
+      background: var(--secondary);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 10px 25px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-info:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .contact-item i {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-right: 15px;
+    }
+
+    .contact-item p, .contact-item a {
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .social-links a {
+      margin-right: 18px;
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Form Section */
+    .contact-form {
+      flex: 1 1 500px;
+      background: #222;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px var(--shadow);
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      background: #2d2d2d;
+      border: 1px solid #3b3b3b;
+      padding: 15px 18px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(212,163,115,0.3);
+      border-color: var(--primary);
+      background: #1f1f1f;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 130px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #d4a373, #e8caa1);
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      color: #1b1b1b;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212,163,115,0.4);
+    }
+
+    footer {
+      background: #0f0f0f;
+      color: #bcbcbc;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 100px;
+      font-size: 0.95rem;
+      border-top: 1px solid #333;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+      .contact-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-form, .contact-info {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <header>
+    <h1>Blissful Weddings</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>We’d Love to Hear From You</h2>
+      <p>Whether you’re planning an intimate gathering or a grand royal affair, our team is here to make your celebration truly blissful.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <p>45A, Wedding Lane, Saket, New Delhi, India</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <a href="tel:+918076979983">+91 80769 79983</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:info@blissfulweddings.com">blissfulwedding@outlook.com</a>
+      </div>
+      <h3 style="margin-top:40px;">Follow Us</h3>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+<form id="contact-form" onsubmit="sendMessage(event)">
+  <input type="text" name="name" placeholder="Full Name" required />
+  <input type="email" name="email" placeholder="Email Address" required />
+  <input type="tel" name="phone" placeholder="Phone Number" />
+  <textarea name="message" placeholder="Write your message..." required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+
+
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Blissful Weddings | Designed with 💖 by Your Creative Team</p>
+  </footer>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("status") === "success") {
+    showPopup("💌 Your message has been sent successfully!");
+  } else if (urlParams.get("status") === "error") {
+    showPopup("⚠️ Something went wrong. Please try again.");
+  }
+
+  function showPopup(message) {
+    const popup = document.createElement("div");
+    popup.textContent = message;
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.background = "rgba(255,255,255,0.85)";
+    popup.style.padding = "1rem 2rem";
+    popup.style.borderRadius = "12px";
+    popup.style.fontFamily = "Poppins, sans-serif";
+    popup.style.color = "#5b3a29";
+    popup.style.zIndex = "9999";
+    popup.style.animation = "fadeInOut 3s ease forwards";
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 3000);
+  }
+});
+</script>
+
+<script>
+function sendEmailJS(event) {
+  console.log("FUNCTION EXECUTED");  // debug #1
+  event.preventDefault();
+
+  const form = document.getElementById("contact-form");
+  console.log("FORM FOUND:", form);  // debug #2
+
+  const fd = new FormData(form);
+  console.log("FORM DATA:", Object.fromEntries(fd)); // debug #3
+
+  // send email
+  emailjs.sendForm("service_b2943ga", "template_vhazr8l", form)
+    .then(() => {
+      console.log("EMAILJS SUCCESS");  // debug #4
+
+      // save backend
+      return fetch("save.php", {
+        method: "POST",
+        body: fd
+      });
+    })
+    .then(() => {
+      console.log("SAVE SUCCESS"); // debug #5
+      alert("Message sent & saved!");
+      form.reset();
+    })
+    .catch(err => console.log("ERROR:", err));
+}
+</script>
+
+
+</body>
+</html>

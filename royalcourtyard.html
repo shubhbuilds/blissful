@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Courtyard | Blissful Weddings</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* Navbar */
+  nav {
+    width: 100%;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  nav h2 a { text-decoration: none; color: #f9d162; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+  nav ul { list-style: none; display: flex; gap: 30px; }
+  nav ul li a { text-decoration: none; color: #fff; font-weight: 500; transition: color 0.3s; }
+  nav ul li a:hover { color: #f9d162; }
+
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1628428989068-ba3fdd65ed79?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1029') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 10%;
+    position: relative;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #f9d162; text-shadow: 0 0 15px rgba(249,209,98,0.5); animation: shimmerText 3s infinite alternate; }
+  .hero p { max-width: 700px; font-size: 1.2rem; color: #ddd; margin-top: 20px; }
+
+  /* Hero floating glows */
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(249,209,98,0.2), transparent);
+    animation: floatGlow 8s infinite ease-in-out;
+    z-index: 1;
+  }
+  .hero::before { top: 10%; left: 10%; }
+  .hero::after { bottom: 15%; right: 15%; animation-delay: 4s; }
+  @keyframes floatGlow { 0% { transform: translate(0, 0); opacity: 0.6; } 50% { transform: translate(30px, -20px); opacity: 0.3; } 100% { transform: translate(0, 0); opacity: 0.6; } }
+  @keyframes shimmerText { 0% { text-shadow: 0 0 10px rgba(249,209,98,0.5); } 50% { text-shadow: 0 0 20px rgba(249,209,98,0.8); } 100% { text-shadow: 0 0 10px rgba(249,209,98,0.5); } }
+
+  /* Info Section */
+  .info { padding: 120px 10% 80px; background: #111; text-align: center; }
+  .info h2 { color: #f9d162; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
+  .info p { color: #ccc; font-size: 1.1rem; max-width: 800px; margin: 0 auto 40px; }
+  .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+  .feature {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(249,209,98,0.2);
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .feature.show { opacity: 1; transform: translateY(0); }
+  .feature:hover { transform: translateY(-10px); box-shadow: 0 0 20px rgba(249,209,98,0.2); }
+  .feature h3 { color: #f9d162; margin-bottom: 10px; }
+  .feature p { font-size: 0.95rem; color: #ccc; }
+
+  /* Gallery */
+  .gallery { padding: 100px 10%; background: #0b0b0b; text-align: center; color: gold; }
+  .gallery h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; letter-spacing: 2px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 215, 0, 0.3); border-color: gold; }
+  .gallery-grid img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+  }
+  .gallery-grid img:hover::after { animation: shine 1s forwards; }
+  @keyframes shine { 100% { left: 125%; } }
+
+  /* Lightbox Styling */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .lightbox-content {
+    display: block;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    animation: zoomIn 0.3s ease;
+  }
+  .close { position: absolute; top: 25px; right: 40px; color: gold; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  .close:hover { color: white; }
+  #caption { margin: 15px auto; text-align: center; font-size: 1.1rem; color: #ddd; font-family: 'Poppins', sans-serif; max-width: 80%; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  /* Footer */
+  footer { background: #000; color: #999; text-align: center; padding: 30px 0; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  footer a { color: #f9d162; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h2><a href="index.html">Blissful Weddings</a></h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#info">Details</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Royal Courtyard</h1>
+  <p>An enchanting open-air venue, blending regal architecture with nature’s elegance.</p>
+</section>
+
+<!-- Info -->
+<section id="info" class="info">
+  <h2>Elegant Courtyard Experience</h2>
+  <p>The Royal Courtyard is perfect for grand outdoor weddings, featuring manicured gardens, majestic fountains, and royal ambiance. Every detail crafted for unforgettable moments.</p>
+
+  <div class="features">
+    <div class="feature"><h3>Capacity</h3><p>Up to 600 guests, ideal for open-air celebrations.</p></div>
+    <div class="feature"><h3>Design</h3><p>European-inspired courtyard with fountains, arches, and lush greenery.</p></div>
+    <div class="feature"><h3>Facilities</h3><p>Outdoor lounges, valet service, catering setup, and premium lighting for evening events.</p></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="gallery">
+  <h2>Courtyard Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1707358685877-0d84349ce32d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=872" alt="Courtyard wedding with fountains" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1711048090309-8e44633bbf24?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Evening courtyard setup" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1629470385980-9c0d9d465246?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Open-air wedding seating" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1564341473359-d4a1d5524fad?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Elegant garden pathway" onclick="openLightbox(this)">
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="">
+    <div id="caption"></div>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+function openLightbox(img) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const caption = document.getElementById("caption");
+  lightbox.style.display = "block";
+  lightboxImg.src = img.src;
+  caption.textContent = img.alt;
+}
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+// Scroll reveal for features
+const features = document.querySelectorAll('.feature');
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  features.forEach(feature => {
+    const featureTop = feature.getBoundingClientRect().top;
+    if(featureTop < triggerBottom) { feature.classList.add('show'); }
+  });
+});
+</script>
+<!-- PLAN WITH US -->
+<section id="plan" class="plan-section">
+  <div class="plan-container">
+    <h2>Let's Plan Your Dream Celebration</h2>
+    <p>
+      Whether it's an intimate royal affair or a grand palace wedding, our team ensures 
+      every moment glows with perfection. Let’s bring your vision to life — effortlessly, 
+      elegantly, and memorably.
+    </p>
+    <a href="contact.html" class="plan-btn">Plan With Us</a>
+  </div>
+</section>
+
+<style>
+/* ---------- PLAN WITH US ---------- */
+.plan-section {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.05), transparent 70%);
+  overflow: hidden;
+}
+
+.plan-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1529634898643-3a1c65e2c43a?auto=format&fit=crop&w=1800&q=90') center/cover no-repeat;
+  opacity: 0.08;
+  filter: blur(6px);
+  z-index: -2;
+}
+
+.plan-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.plan-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,175,55,0.12);
+  box-shadow: 0 0 40px rgba(212,175,55,0.08);
+}
+
+.plan-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #f5d87a;
+  margin-bottom: 20px;
+}
+
+.plan-container p {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(245,245,245,0.82);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1rem;
+}
+
+.plan-btn {
+  display: inline-block;
+  padding: 14px 34px;
+  background: linear-gradient(90deg, #d4af37, #f4df96);
+  color: #0a0a0a;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plan-container {
+    padding: 40px 24px;
+  }
+  .plan-container h2 {
+    font-size: 1.8rem;
+  }
+  .plan-container p {
+    font-size: 0.95rem;
+  }
+}
+</style>
+
+<!-- Footer -->
+<footer>
+  © 2025 Blissful Weddings | <a href="index.html">Back to Home</a>
+</footer>
+
+
+</body>
+</html>

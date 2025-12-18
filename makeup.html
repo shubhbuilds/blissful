@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bridal Makeup & Styling — Blissful Weddings</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+
+    :root {
+      --gold: #d4af37;
+      --dark-bg: #0a0a0a;
+      --text-light: #f7f7f7;
+      --text-muted: #bdb7b0;
+      --glass: rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-light);
+      background: var(--dark-bg);
+      overflow-x: hidden;
+    }
+
+    /* ---------- Background ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1596464716121-fc1f9af6d62b?auto=format&fit=crop&w=1800&q=90')
+                  center/cover no-repeat;
+      filter: brightness(0.35) blur(4px);
+      transform: scale(1.05);
+      z-index: -2;
+      animation: zoom 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.1); }
+    }
+
+    /* shimmer overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+      animation: shimmer 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes shimmer {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(100%); }
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    nav h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin-left: 20px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .hero-content {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 50px 30px;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: var(--gold);
+      color: #0a0a0a;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    section p {
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      transition: 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      margin-top: 70px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      display: inline-block;
+      padding: 30px 50px;
+      color: var(--text-light);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2>Blissful Weddings</h2>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="#">Bridal Makeup</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bridal Makeup & Styling</h1>
+      <p>
+        Every bride deserves to glow with confidence and grace. Our expert makeup artists and stylists bring 
+        out your natural beauty with timeless elegance—ensuring you look as radiant as your love story.
+      </p>
+      <a href="#gallery" class="btn">Discover the Magic</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <h2>Elegance That Reflects You</h2>
+    <p>
+      From soft natural looks to glamorous bridal transformations, our makeup and styling team works with precision and passion. 
+      We focus on enhancing your unique features with premium products, artistic detailing, and long-lasting finesse—
+      so your bridal look stays perfect through every emotion, photo, and moment.
+    </p>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Bridal Beauty Moments</h2>
+    <div class="gallery">
+      <img src="https://plus.unsplash.com/premium_photo-1675107360276-b3f632199ce8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Bridal Makeup">
+      <img src="https://plus.unsplash.com/premium_photo-1661387527207-6b2919ed49d5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Makeup Artist at Work">
+      <img src="https://plus.unsplash.com/premium_photo-1664298526023-9d1ca30b6278?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Bridal Hair Styling">
+      <img src="https://images.unsplash.com/photo-1704342345964-beba6e88ed45?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=872" alt="Traditional Look">
+      <img src="https://images.unsplash.com/photo-1600634999623-864991678406?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Makeup Essentials">
+      <img src="https://plus.unsplash.com/premium_photo-1661384250629-b506d5a57f31?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=869" alt="Modern Bridal Makeup">
+      <img src="https://plus.unsplash.com/premium_photo-1661411013464-99d42744306d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=871 " alt="Makeup Session">
+      <img src="https://images.unsplash.com/photo-1684867952634-1f89c58fe31d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=872" alt="Bride Ready for Ceremony">
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta">
+      <h2>Book Your Bridal Glam Session</h2>
+      <p>
+        Let us craft the perfect look for your big day — elegant, radiant, and uniquely you. 
+        Schedule your trial or bridal package consultation with our expert stylists today.
+      </p>
+      <br />
+      <a href="contact.html" class="btn">Book Now</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Blissful Weddings — Where beauty meets timeless elegance.
+  </footer>
+</body>
+</html>

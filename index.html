@@ -1,0 +1,1163 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Blissful Weddings — Royal Luxury Weddings</title>
+
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- AOS Scroll Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <style>
+        
+    /* ---------- SERVICES SECTION (Seamless Royal Bubble Look) ---------- */
+    #services {
+      position: relative;
+      background: transparent; /* same as page background */
+      padding: 90px 20px;
+      color: #f3e9c9;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* soft golden highlight (optional glow behind text) */
+    #services::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(210, 180, 80, 0.08), transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* main content bubble */
+    #services .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(214, 180, 90, 0.12);
+      border-radius: 28px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.04);
+      padding: 70px 40px;
+    }
+
+    /* title styling */
+    #services h2 {
+      color: #e6c76b;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    #services .divider {
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(90deg, #d8b84e, transparent);
+      margin: 16px auto 30px;
+    }
+
+    #services .lead {
+      color: rgba(245, 236, 205, 0.85);
+      max-width: 720px;
+      margin: 0 auto 50px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* grid layout */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    /* card look */
+    .service-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(214, 180, 90, 0.12);
+      border-radius: 16px;
+      padding: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.07);
+    }
+      
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+    /* text inside cards */
+    .service-card h4 {
+      color: #f6d97a;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: rgba(245, 238, 210, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+        /* ---------- RESET & BASE ---------- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html,body { height: 100%; }
+        body {
+          font-family: 'Poppins', sans-serif;
+          background: #000000;
+          color: #f2efe6;
+          -webkit-font-smoothing:antialiased;
+          -moz-osx-font-smoothing:grayscale;
+          line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { display:block; width:100%; height:auto; border-radius:10px; object-fit:cover; }
+
+        /* ---------- CONTAINER ---------- */
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- NAVBAR ---------- */
+        header {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          background: linear-gradient(180deg, rgba(2,2,2,0.55), rgba(2,2,2,0.25));
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid rgba(212,175,55,0.08);
+          z-index: 1200;
+        }
+        .nav-inner { display:flex; align-items:center; justify-content:space-between; height:72px; max-width:1200px; margin:0 auto; padding:0 24px; }
+        .brand {
+          display:flex; align-items:center; gap:14px;
+        }
+        .badge {
+          width:44px; height:44px; border-radius:8px;
+          background: linear-gradient(135deg,#d4af37,#f5dd8f);
+          box-shadow: 0 6px 18px rgba(212,175,55,0.14), inset 0 -6px 18px rgba(0,0,0,0.12);
+          display:flex; align-items:center; justify-content:center;
+          font-family:'Playfair Display', serif; color:#0b0b0b; font-weight:700;
+          font-size:18px;
+        }
+        .brand h1 {
+          font-family: 'Playfair Display', serif;
+          font-size:20px; color:#f8e9b7; letter-spacing:1px;
+        }
+        nav ul { list-style:none; display:flex; gap:22px; align-items:center; }
+        nav a { color: rgba(242,239,230,0.92); font-weight:500; font-size:0.95rem; transition: color .22s ease, transform .18s ease; }
+        nav a:hover { color:#f0d57a; transform: translateY(-2px); }
+
+        /* CTA in nav */
+        .nav-cta {
+          padding:8px 14px; border-radius:999px;
+          border:1px solid rgba(212,175,55,0.12);
+          background: linear-gradient(90deg, rgba(212,175,55,0.06), rgba(212,175,55,0.02));
+          color:#f6e9b9; font-weight:600; font-size:0.92rem;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+        }
+
+        /* ---------- HERO / THUMBNAIL ---------- */
+        .hero {
+          height: calc(100vh - 72px);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          position:relative;
+          padding: 92px 24px 48px;
+          margin-top:72px;
+          overflow:hidden;
+        }
+
+        /* hero background image (royal wedding hall) */
+      .hero::before {
+      content:"";
+      position:absolute; inset:0;
+      background-image: url('https://scontent.fdel73-1.fna.fbcdn.net/v/t1.15752-9/566440539_1184316470267388_3314084149635148291_n.png?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=E0VEAE9Fc5cQ7kNvwGQF8iN&_nc_oc=AdlJYm6pDZyTBHNwzgHwZBJYfHAkD4-Bb7ik2ckK2iuZboPCKwwawBhqIdhcoyAlmCA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdel73-1.fna&oh=03_Q7cD3gHW1g9fJ7nTZQjpAUMnuHuK7IsQCPQBFLs5EWdqQ8qYug&oe=6919E95A');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+
+
+        /* subtle grain/texture overlay for luxury effect */
+        .hero::after {
+          content:"";
+          position:absolute; inset:0;
+          background: radial-gradient(circle at 20% 15%, rgba(212,175,55,0.035), transparent 8%),
+                      radial-gradient(circle at 85% 80%, rgba(255,255,255,0.02), transparent 10%);
+          z-index:-1;
+          pointer-events:none;
+        }
+
+        .hero-inner {
+          max-width:1000px; width:100%;
+          display:flex; flex-direction:column; gap:20px; align-items:center;
+        }
+
+        .eyebrow {
+          background: linear-gradient(90deg,#f7e8b0, rgba(255,255,255,0.05));
+          color:#0a0a0a; padding:6px 12px; border-radius:999px; font-weight:600; font-size:0.88rem;
+          letter-spacing:0.6px; box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+    .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+          url('https://scontent.fdel73-1.fna.fbcdn.net/v/t1.15752-9/566440539_1184316470267388_3314084149635148291_n.png?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=E0VEAE9Fc5cQ7kNvwGQF8iN&_nc_oc=AdlJYm6pDZyTBHNwzgHwZBJYfHAkD4-Bb7ik2ckK2iuZboPCKwwawBhqIdhcoyAlmCA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdel73-1.fna&oh=03_Q7cD3gHW1g9fJ7nTZQjpAUMnuHuK7IsQCPQBFLs5EWdqQ8qYug&oe=6919E95A') center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 10%;
+        .hero-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(34px, 4.2vw, 56px);
+          line-height:1.02;
+          color: transparent;
+          background: linear-gradient(90deg,#fff,#f9e0a0 40%, #d4af37 100%);
+          -webkit-background-clip:text;
+          background-clip:text;
+          text-shadow: 0 6px 30px rgba(212,175,55,0.12);
+          font-weight:700;
+          letter-spacing:1px;
+          transform-origin:center;
+          animation: shimmer 3.2s infinite linear;
+        }
+      }
+
+        @keyframes shimmer {
+          0% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.06)); }
+          50% { filter: drop-shadow(0 0 18px rgba(212,175,55,0.16)); }
+          100% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.06)); }
+        }
+
+        .hero-sub {
+          max-width:760px; color:rgba(242,239,230,0.94); font-size:1.06rem; line-height:1.7;
+          text-align:center;
+        }
+
+        .hero-ctas { display:flex; gap:18px; margin-top:16px; flex-wrap:wrap; justify-content:center; }
+        .btn-primary {
+          background: linear-gradient(90deg,#d4af37,#f4df96);
+          color:#050505; font-weight:700; padding:12px 26px; border-radius:999px;
+          border: none; cursor:pointer; font-size:0.98rem; box-shadow: 0 12px 30px rgba(212,175,55,0.12);
+          transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 28px 60px rgba(212,175,55,0.18); }
+        .btn-ghost {
+          border: 1px solid rgba(242,239,230,0.08);
+          color: rgba(242,239,230,0.95);
+          padding:11px 22px; border-radius:999px; background:transparent; cursor:pointer;
+        }
+        .btn-ghost:hover { color:#f0d57a; border-color: rgba(240,213,122,0.22); transform: translateY(-3px); }
+
+        /* ---------- MAIN CONTENT ---------- */
+        main { padding-bottom:60px; }
+
+        /* Section heading style consistent for symmetry */
+        .section {
+          padding: 72px 0;
+          display:block;
+          text-align:center;
+        }
+        .section .wrap { display:block; }
+        .section h2 {
+          font-family:'Playfair Display', serif; font-size:28px; color:#f7e9bb; margin-bottom:8px;
+        }
+        .section .lead { color: rgba(242,239,230,0.84); margin: 0 auto 28px; max-width:760px; font-size:1rem; }
+
+        .divider {
+          width:92px; height:4px; margin: 18px auto 34px;
+          background: linear-gradient(90deg,#d4af37, rgba(212,175,55,0.14));
+          border-radius:3px;
+        }
+
+        /* Venues grid (symmetrical) */
+        .venues-grid {
+          display:grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap:28px;
+          margin-top:10px;
+        }
+        .venue {
+          border-radius:14px;
+          overflow:hidden;
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border: 1px solid rgba(212,175,55,0.08);
+          padding:0;
+          transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .venue:hover { transform: translateY(-10px); box-shadow: 0 22px 60px rgba(212,175,55,0.09); }
+        .venue .thumb { height:220px; overflow:hidden; }
+        .venue .meta { padding:18px 16px; text-align:left; }
+        .venue h3 { font-family:'Playfair Display', serif; color:#f6e5a9; font-size:1.2rem; margin-bottom:6px; }
+        .venue p { color: rgba(242,239,230,0.86); font-size:0.95rem; line-height:1.5; }
+
+        /* Services - 3 column symmetric */
+        .services-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:28px; }
+        .service-card {
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border:1px solid rgba(212,175,55,0.06);
+          padding:26px; border-radius:12px; text-align:left;
+          transition: transform .22s ease, box-shadow .22s ease;
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow:0 18px 40px rgba(212,175,55,0.07); }
+        .service-card h4 { font-family:'Playfair Display', serif; color:#f6e5a9; margin-bottom:8px; font-size:1.05rem; }
+        .service-card p { color: rgba(242,239,230,0.88); font-size:0.94rem; }
+
+        /* Gallery grid - symmetric squares */
+        .gallery-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-top:18px; }
+        .gallery-grid .gimg { height:140px; overflow:hidden; border-radius:10px; transition: transform .28s ease; }
+        .gallery-grid .gimg:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(212,175,55,0.08); }
+
+        /* Contact center */
+        .contact-card {
+          max-width:700px; margin: 0 auto; padding:28px; border-radius:12px;
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border:1px solid rgba(212,175,55,0.06);
+        }
+        .form-row { display:flex; gap:14px; margin-bottom:12px; }
+        .form-row .col { flex:1; }
+        input, textarea {
+          width:100%; padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+          background: rgba(255,255,255,0.02); color:#fff; font-size:0.95rem;
+        }
+        textarea { min-height:120px; resize:vertical; }
+
+        .submit-row { display:flex; justify-content:center; margin-top:12px; }
+
+        /* Footer */
+        footer {
+          margin-top:40px; padding:40px 0; text-align:center; color:rgba(242,239,230,0.72);
+          border-top:1px solid rgba(212,175,55,0.06);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width:1024px) {
+          .venues-grid { grid-template-columns: repeat(2, 1fr); }
+          .services-grid { grid-template-columns: repeat(2, 1fr); }
+          .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width:720px) {
+          .nav-inner { padding:0 16px; }
+          nav ul { gap:12px; font-size:0.92rem; }
+          .hero { padding: 92px 18px 48px; }
+          .hero-title { font-size: clamp(24px, 8vw, 42px); }
+          .venues-grid, .services-grid { grid-template-columns: 1fr; }
+          .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+          .hero-sub { font-size:0.98rem; padding:0 10px; }
+          .form-row { flex-direction:column; }
+        }
+    .venues-grid a.venue {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+
+      </style>
+    </head>
+    <body>
+
+      <!-- NAVBAR -->
+      <header>
+        <div class="nav-inner wrap">
+          <div class="brand">
+            <div class="badge">BW</div>
+    <h2><a href="index.html" style="text-decoration: none; color: #f9d162;">Blissful Weddings</a></h2>
+          </div>
+
+          <nav>
+            <ul>
+              <li style="display:inline"><a href="#home">Home</a></li>
+              <li style="display:inline"><a href="#venues">Venues</a></li>
+              <li style="display:inline"><a href="#services">Services</a></li>
+              <li style="display:inline"><a href="#gallery">Gallery</a></li>
+              <li style="display:inline"><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+    <!-- HERO -->
+<section id="home" class="hero" aria-label="Hero — Blissful Weddings">
+  <div data-aos="fade-down" data-aos-easing="ease-out-cubic" data-aos-duration="1200"
+       class="hero-inner wrap">
+    <div class="eyebrow">Royal Wedding & Event Curators</div>
+    <h2 class="hero-title">Ceremonies That Shine Like Golden Heirlooms</h2>
+    <p class="hero-sub">We design majestic weddings in palatial halls and grand ballrooms — expert planning, exquisite décor, and flawless execution so your celebration stands the test of time.</p>
+
+    <div class="hero-ctas" style="justify-content:center;"> 
+      <!-- Only one button now -->
+      <button class="btn-primary" onclick="location.href='#venues'">View Venues</button>
+    </div>
+  </div>
+</section>
+
+
+      <main>
+
+        <!-- VENUES -->
+    <section id="venues" class="section">
+      <div class="wrap">
+        <h2>Our Signature Venues</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="lead">Handpicked majestic locations — palaces, grand ballrooms and private estates — perfect for regal celebrations.</p>
+
+        <div class="venues-grid" aria-label="List of venues">
+
+          <a href="imperial.html" class="venue" aria-labelledby="v1">
+            <div class="thumb">
+              <img src="https://plus.unsplash.com/premium_photo-1678580382574-771e1081dfb1?auto=format&fit=crop&q=80&w=387" alt="Royal palace ballroom with chandeliers">
+            </div>
+            <div class="meta">
+              <h3 id="v1">Imperial Palace Hall</h3>
+              <p>Grand vaulted ceilings, crystal chandeliers, and ornate architecture for an unforgettable royal ceremony.</p>
+            </div>
+          </a>
+
+          <a href="grandeur.html" class="venue" aria-labelledby="v2">
+            <div class="thumb">
+              <img src="https://images.unsplash.com/photo-1734705797879-0c23e9edca21?auto=format&fit=crop&q=80&w=869" alt="Luxury ballroom banquet seating">
+            </div>
+            <div class="meta">
+              <h3 id="v2">Grandeur Banquet Estate</h3>
+              <p>Expansive halls fitted with elegant drapery and custom lighting to match your royal motif.</p>
+            </div>
+          </a>
+
+          <a href="royalcourtyard.html" class="venue" aria-labelledby="v3">
+            <div class="thumb">
+              <img src="https://plus.unsplash.com/premium_photo-1729163145087-34a5a4c50101?auto=format&fit=crop&q=80&w=870" alt="Luxury wedding palace entrance">
+            </div>
+            <div class="meta">
+              <h3 id="v3">Royal Courtyard Estate</h3>
+              <p>Private estate with lush courtyards, fountains and regal walkways ideal for intimate regal affairs.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <h2>Our Royal Services</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="lead">
+          From timeless décor to gourmet cuisines and cinematic storytelling — we bring every royal detail of your celebration to life.
+        </p>
+
+        <div class="services-grid" aria-label="List of services">
+
+          <a href="photography.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1748216524009-b4cc1d1ce53f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=881" alt="Wedding photography and videography" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Photography & Videography</h4>
+              <p>Capture every emotion and sparkle through cinematic wedding films and luxury portrait sessions handled by our in-house creative team.</p>
+            </div>
+          </a>
+
+          <a href="catering.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://plus.unsplash.com/premium_photo-1726743709026-9137c8f5a597?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=836" alt="Luxury wedding catering setup" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Gourmet Catering</h4>
+              <p>Curated multi-cuisine experiences and signature menus — blending royal Indian flavors with global fine dining excellence.</p>
+            </div>
+          </a>
+
+          <a href="decor.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1625038032515-308ab14d10b9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Wedding floral decoration" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Decor & Styling</h4>
+              <p>From lush floral arrangements to regal stage design, we craft the perfect visual symphony that embodies your royal dream.</p>
+            </div>
+          </a>
+
+          <a href="entertainment.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1758810409996-583f3bad7d51?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=871" alt="Luxury wedding entertainment" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Entertainment & Performances</h4>
+              <p>Live bands, celebrity performances and curated acts that add grandeur and unforgettable charm to your royal celebration.</p>
+            </div>
+          </a>
+
+          <a href="guest.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1738159786380-dab0a5662174?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1032" alt="Luxury wedding guest management" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Guest Management</h4>
+              <p>From invites to hospitality — we ensure every guest feels the warmth of royal treatment from arrival to farewell.</p>
+            </div>
+          </a>
+
+          <a href="makeup.html" class="service-link" style="text-decoration:none; color:inherit;">
+            <div class="service-card">
+              <img src="https://plus.unsplash.com/premium_photo-1661326352695-6cbe1ff74ee9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Bridal makeup and styling" style="border-radius:10px; margin-bottom:16px;">
+              <h4>Bridal Styling & Makeup</h4>
+              <p>Professional stylists and luxury makeup artists ensure your royal glow lasts from the first look to the final dance.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+   <!-- ✅ FIXED & ENHANCED GALLERY SECTION WITH AUTOPLAY -->
+<section id="gallery" class="section" aria-label="Gallery">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Moments of Majesty</h2>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="lead" data-aos="fade-up" data-aos-delay="100">
+      A royal glimpse into real celebrations crafted by Blissful Weddings — grandeur, warmth, and timeless elegance.
+    </p>
+
+    <div class="gallery-slider" data-aos="fade-up" data-aos-delay="200">
+      <button class="prev" aria-label="Previous">&#10094;</button>
+      <div class="gallery-track">
+        <img src="https://images.unsplash.com/photo-1643178141336-3795af26af9c?auto=format&fit=crop&q=80&w=889"
+             alt="Luxury Wedding hall" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1562012314-40a9e0a684d7?auto=format&fit=crop&q=80&w=774"
+             alt="Royal wedding courtyard" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1574482211311-45a2169db57c?auto=format&fit=crop&q=80&w=874"
+             alt="Dinner table at yard" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1710572093532-06531c3cd2c1?auto=format&fit=crop&q=80&w=1032"
+             alt="Stay rooms" onclick="openLightbox(this)">
+      </div>
+      <button class="next" aria-label="Next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ----- GALLERY SLIDER -----
+  let currentIndex = 0;
+  const track = document.querySelector('.gallery-track');
+  const images = document.querySelectorAll('.gallery-track img');
+  const total = images.length;
+  const nextBtn = document.querySelector('.next');
+  const prevBtn = document.querySelector('.prev');
+  let isScrolling = false;
+
+  function updateSlide() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+  }
+
+  function nextSlide() {
+    if (isScrolling) return;
+    isScrolling = true;
+    currentIndex = (currentIndex + 1) % total;
+    updateSlide();
+    setTimeout(() => (isScrolling = false), 600);
+  }
+
+  function prevSlide() {
+    if (isScrolling) return;
+    isScrolling = true;
+    currentIndex = (currentIndex - 1 + total) % total;
+    updateSlide();
+    setTimeout(() => (isScrolling = false), 600);
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  // Dots
+  const dotContainer = document.createElement('div');
+  dotContainer.classList.add('gallery-dots');
+  document.querySelector('.gallery-slider').appendChild(dotContainer);
+
+  images.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('gallery-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      updateSlide();
+    });
+    dotContainer.appendChild(dot);
+  });
+
+  function updateDots() {
+    document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  // Mobile swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => (startX = e.touches[0].clientX));
+  track.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+  });
+
+  // Scroll wheel control
+  track.addEventListener(
+    'wheel',
+    e => {
+      e.preventDefault();
+      if (isScrolling) return;
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta > 40) nextSlide();
+      if (delta < -40) prevSlide();
+    },
+    { passive: false }
+  );
+
+  // ----- ✅ AUTOPLAY FUNCTIONALITY -----
+  let autoplayInterval;
+  const gallerySlider = document.querySelector('.gallery-slider');
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      nextSlide();
+    }, 4000); // every 4 seconds
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  // Start autoplay
+  startAutoplay();
+
+  // Pause on hover
+  gallerySlider.addEventListener('mouseenter', stopAutoplay);
+  gallerySlider.addEventListener('mouseleave', startAutoplay);
+</script>
+
+
+<style>
+/* --- GALLERY --- */
+#gallery {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.05), transparent 70%);
+  padding: 90px 20px;
+  overflow: hidden;
+}
+
+.gallery-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 880px;
+  margin: 3rem auto 0;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,175,55,0.15);
+  box-shadow: 0 0 50px rgba(212,175,55,0.08);
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.gallery-track img {
+  width: 100%;
+  flex-shrink: 0;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+  transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+.gallery-track img:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+/* --- ARROWS --- */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15,15,15,0.45);
+  border: 1px solid rgba(212,175,55,0.2);
+  color: #f5e9c0;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.prev:hover, .next:hover {
+  background: rgba(212,175,55,0.25);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev { left: 18px; }
+.next { right: 18px; }
+
+/* --- DOTS (optional if you want indicators) --- */
+.gallery-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+.gallery-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.gallery-dot.active {
+  background: #d4af37;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery-track img {
+    height: 300px;
+  }
+  .prev, .next {
+    font-size: 1.6rem;
+    padding: 8px 12px;
+  }
+}
+</style>
+
+<<script>
+let currentIndex = 0;
+const track = document.querySelector('.gallery-track');
+const images = document.querySelectorAll('.gallery-track img');
+const total = images.length;
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+let isScrolling = false; // prevents jitter
+
+function updateSlide() {
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  updateDots();
+}
+
+// nav buttons
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+function nextSlide() {
+  if (isScrolling) return;
+  isScrolling = true;
+  currentIndex = (currentIndex + 1) % total;
+  updateSlide();
+  setTimeout(() => (isScrolling = false), 600);
+}
+
+function prevSlide() {
+  if (isScrolling) return;
+  isScrolling = true;
+  currentIndex = (currentIndex - 1 + total) % total;
+  updateSlide();
+  setTimeout(() => (isScrolling = false), 600);
+}
+
+// mobile swipe
+let startX = 0;
+track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+track.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+  if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+});
+
+// smooth trackpad / scroll gesture (de-bounced)
+track.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (isScrolling) return;
+  const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  if (delta > 40) nextSlide();
+  if (delta < -40) prevSlide();
+}, { passive: false });
+
+// dots indicator
+const dotContainer = document.createElement('div');
+dotContainer.classList.add('gallery-dots');
+document.querySelector('.gallery-slider').appendChild(dotContainer);
+
+images.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('gallery-dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    currentIndex = i;
+    updateSlide();
+  });
+  dotContainer.appendChild(dot);
+});
+
+function updateDots() {
+  document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentIndex);
+  });
+}
+</script>
+
+
+
+
+      <!-- LIGHTBOX POPUP -->
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="">
+        <div id="caption"></div>
+      </div>
+    </section>
+
+    <!-- STYLES -->
+    <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .gimg img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .gimg img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 5%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 900px;
+      border-radius: 1rem;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 45px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 700;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: gold;
+    }
+
+    #caption {
+      margin: 20px auto;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ddd;
+      max-width: 80%;
+    }
+    </style>
+
+    <!-- SCRIPT -->
+    <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const caption = document.getElementById("caption");
+      lightbox.style.display = "block";
+      lightboxImg.src = img.src;
+      caption.textContent = img.alt;
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+    </script>
+
+
+      <!-- TESTIMONIALS -->
+<section id="testimonials" class="section" aria-label="Testimonials">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Words from Our Royal Clients</h2>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="lead" data-aos="fade-up" data-aos-delay="100">
+      Every grand celebration we craft leaves behind stories of joy, elegance, and royal warmth.
+    </p>
+
+    <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="200">
+      <button class="tprev" aria-label="Previous">&#10094;</button>
+
+      <div class="testimonial-track">
+        <div class="testimonial-card">
+          <p class="quote">“Our wedding looked straight out of a royal dream. The decor, food, and music were beyond perfect — every guest felt special!”</p>
+          <div class="author">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=150&q=80" alt="Bride and groom">
+            <div>
+              <h4>Ritika & Dev</h4>
+              <span>Grandeur Banquet, Jaipur</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="quote">“They turned our ideas into an enchanting palace affair. Every moment shimmered with class and grace — it was breathtaking.”</p>
+          <div class="author">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=150&q=80" alt="Happy couple">
+            <div>
+              <h4>Ananya & Karan</h4>
+              <span>Udaipur Heritage Fort</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="quote">“The Blissful Weddings team handled everything — from decor to guest management — with unmatched professionalism and warmth.”</p>
+          <div class="author">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Couple portrait">
+            <div>
+              <h4>Priya & Arjun</h4>
+              <span>Imperial Palace Hall</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="tnext" aria-label="Next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<style>
+/* --- TESTIMONIALS --- */
+#testimonials {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.05), transparent 70%);
+  padding: 90px 20px;
+  overflow: hidden;
+}
+
+.testimonial-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 3rem auto 0;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,175,55,0.15);
+  box-shadow: 0 0 40px rgba(212,175,55,0.08);
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.testimonial-card {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 60px 30px;
+  text-align: center;
+  color: #f8f6e8;
+}
+
+.testimonial-card .quote {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 1.8rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.author img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid rgba(212,175,55,0.5);
+  object-fit: cover;
+}
+
+.author h4 {
+  font-family: 'Playfair Display', serif;
+  color: #f3d675;
+  font-size: 1.05rem;
+}
+
+.author span {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(240,240,240,0.75);
+}
+
+/* nav buttons */
+.tprev, .tnext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15,15,15,0.45);
+  border: 1px solid rgba(212,175,55,0.2);
+  color: #f5e9c0;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.tprev:hover, .tnext:hover {
+  background: rgba(212,175,55,0.25);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.tprev { left: 18px; }
+.tnext { right: 18px; }
+
+/* dots */
+.tdots {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.tdot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.tdot.active { background: #d4af37; }
+
+/* responsive */
+@media (max-width: 768px) {
+  .testimonial-card { padding: 40px 20px; }
+  .author img { width: 50px; height: 50px; }
+}
+</style>
+
+<script>
+// --- TESTIMONIAL SLIDER ---
+let tIndex = 0;
+const tTrack = document.querySelector('.testimonial-track');
+const tCards = document.querySelectorAll('.testimonial-card');
+const tTotal = tCards.length;
+const tNext = document.querySelector('.tnext');
+const tPrev = document.querySelector('.tprev');
+let tScrolling = false;
+
+function updateTestimonials() {
+  tTrack.style.transform = `translateX(-${tIndex * 100}%)`;
+  updateTDots();
+}
+
+tNext.addEventListener('click', nextT);
+tPrev.addEventListener('click', prevT);
+
+function nextT() {
+  if (tScrolling) return;
+  tScrolling = true;
+  tIndex = (tIndex + 1) % tTotal;
+  updateTestimonials();
+  setTimeout(() => (tScrolling = false), 700);
+}
+
+function prevT() {
+  if (tScrolling) return;
+  tScrolling = true;
+  tIndex = (tIndex - 1 + tTotal) % tTotal;
+  updateTestimonials();
+  setTimeout(() => (tScrolling = false), 700);
+}
+
+// dots
+const tDotContainer = document.createElement('div');
+tDotContainer.classList.add('tdots');
+document.querySelector('.testimonial-slider').appendChild(tDotContainer);
+
+tCards.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('tdot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    tIndex = i;
+    updateTestimonials();
+  });
+  tDotContainer.appendChild(dot);
+});
+
+function updateTDots() {
+  document.querySelectorAll('.tdot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === tIndex);
+  });
+}
+
+// auto-slide every 7s
+setInterval(() => nextT(), 7000);
+</script>
+
+      </main>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="wrap">
+          <p>© 2025 Blissful Weddings. All rights reserved. &nbsp; • &nbsp; Royal luxury event design & planning</p>
+        </div>
+      </footer>
+<script>
+  AOS.init({
+    duration: 1000,   // animation duration (in ms)
+    offset: 120,      // how early the animation triggers
+    once: true,       // animation happens only once
+  });
+</script>
+
+
+    </body>
+    </html>
